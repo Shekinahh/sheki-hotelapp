@@ -17,6 +17,19 @@ $app = new Illuminate\Foundation\Application(
 
 /*
 |--------------------------------------------------------------------------
+| Configure Storage Path for Vercel Serverless
+|--------------------------------------------------------------------------
+|
+| In serverless environments, the deployment directory is read-only.
+| We redirect all storage paths (compiled views, sessions, logs, cache) to /tmp/storage.
+|
+*/
+if (isset($_ENV['VERCEL']) || isset($_SERVER['VERCEL']) || (function_exists('sys_get_temp_dir') && is_dir('/tmp'))) {
+    $app->useStoragePath('/tmp/storage');
+}
+
+/*
+|--------------------------------------------------------------------------
 | Bind Important Interfaces
 |--------------------------------------------------------------------------
 |
