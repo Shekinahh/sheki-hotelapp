@@ -1,2 +1,5 @@
-*
+*.php
 !.gitignore
+!packages.php
+!services.php
+
