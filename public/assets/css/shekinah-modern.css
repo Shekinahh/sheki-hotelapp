@@ -1,0 +1,624 @@
+/* ==========================================================================
+   SHEKINAH LUXURY HOTEL & RESIDENCES - MODERN DESIGN SYSTEM
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+:root {
+    --sheki-gold: #c5a880;
+    --sheki-gold-hover: #b39265;
+    --sheki-gold-light: #f6efe6;
+    --sheki-gold-accent: #e5c38c;
+    --sheki-dark: #0f172a;
+    --sheki-dark-2: #1e293b;
+    --sheki-dark-3: #334155;
+    --sheki-light: #f8fafc;
+    --sheki-gray: #64748b;
+    --sheki-border: #e2e8f0;
+    --sheki-card-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08);
+    --sheki-card-shadow-hover: 0 20px 40px -5px rgba(15, 23, 42, 0.16);
+    --sheki-font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --sheki-font-heading: 'Playfair Display', Georgia, serif;
+    --sheki-font-brand: 'Cinzel', serif;
+}
+
+body {
+    font-family: var(--sheki-font-body);
+    color: #334155;
+    background-color: #fcfcfd;
+    overflow-x: hidden;
+    line-height: 1.65;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--sheki-font-heading);
+    color: var(--sheki-dark);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* --------------------------------------------------------------------------
+   TOP INFO BAR & NAVBAR
+   -------------------------------------------------------------------------- */
+.sheki-topbar {
+    background: #070d19;
+    color: #94a3b8;
+    font-size: 0.82rem;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    letter-spacing: 0.02em;
+}
+.sheki-topbar a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.sheki-topbar a:hover {
+    color: var(--sheki-gold);
+}
+
+.sheki-navbar {
+    background: rgba(11, 17, 32, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(197, 168, 128, 0.22);
+    padding: 14px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1050;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.sheki-brand {
+    font-family: var(--sheki-font-brand);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: #ffffff !important;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+.sheki-brand i {
+    font-size: 1.15rem;
+}
+.sheki-brand span {
+    color: var(--sheki-gold);
+    font-weight: 300;
+}
+.sheki-brand-badge {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, rgba(197, 168, 128, 0.25), rgba(197, 168, 128, 0.1));
+    border: 1px solid rgba(197, 168, 128, 0.4);
+    color: var(--sheki-gold-accent);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: var(--sheki-font-body);
+    margin-left: 2px;
+}
+
+.sheki-navbar .navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.sheki-nav-link {
+    color: #e2e8f0 !important;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 14px !important;
+    transition: all 0.25s ease;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    position: relative;
+}
+.sheki-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 14px;
+    right: 14px;
+    height: 2px;
+    background: var(--sheki-gold);
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+}
+.sheki-nav-link:hover {
+    color: var(--sheki-gold) !important;
+    background: transparent;
+}
+.sheki-nav-link:hover::after,
+.sheki-nav-link.active::after {
+    transform: scaleX(1);
+}
+.sheki-nav-link.active {
+    color: var(--sheki-gold) !important;
+    font-weight: 600;
+}
+
+.sheki-btn-gold {
+    background: linear-gradient(135deg, #d3b791 0%, var(--sheki-gold) 50%, #9e7a46 100%);
+    color: #0f172a !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 9px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(197, 168, 128, 0.3);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    white-space: nowrap;
+    line-height: 1.2;
+}
+.sheki-btn-gold:hover {
+    background: linear-gradient(135deg, #e4cdad 0%, #d3b791 50%, #ad8a52 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(197, 168, 128, 0.45);
+    color: #0b1120 !important;
+}
+
+.sheki-btn-outline-gold {
+    background: transparent;
+    color: #f1e5d5 !important;
+    border: 1.5px solid rgba(197, 168, 128, 0.6);
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border-radius: 50px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    white-space: nowrap;
+    line-height: 1.2;
+}
+.sheki-btn-outline-gold:hover {
+    background: rgba(197, 168, 128, 0.15);
+    border-color: var(--sheki-gold);
+    color: #ffffff !important;
+    transform: translateY(-2px);
+}
+
+.sheki-btn-dark {
+    background: var(--sheki-dark);
+    color: #ffffff !important;
+    border: none;
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.sheki-btn-dark:hover {
+    background: var(--sheki-dark-2);
+    transform: translateY(-2px);
+    color: #ffffff !important;
+}
+
+/* --------------------------------------------------------------------------
+   HERO BANNER
+   -------------------------------------------------------------------------- */
+.sheki-hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    padding: 100px 0;
+}
+.sheki-hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.82) 0%, rgba(15, 23, 42, 0.65) 60%, rgba(15, 23, 42, 0.92) 100%);
+}
+.sheki-hero-content {
+    position: relative;
+    z-index: 2;
+}
+.sheki-hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(197, 168, 128, 0.15);
+    border: 1px solid rgba(197, 168, 128, 0.4);
+    color: var(--sheki-gold-accent);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.sheki-hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+.sheki-hero-desc {
+    font-size: 1.15rem;
+    color: #cbd5e1;
+    max-width: 620px;
+    margin-bottom: 35px;
+    font-weight: 300;
+}
+
+/* --------------------------------------------------------------------------
+   FLOATING SEARCH BAR
+   -------------------------------------------------------------------------- */
+.sheki-search-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+    padding: 24px 30px;
+    margin-top: -50px;
+    position: relative;
+    z-index: 10;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+}
+.sheki-search-card label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--sheki-gray);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.sheki-search-card .form-control, .sheki-search-card .form-select {
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--sheki-dark);
+    transition: all 0.2s;
+}
+.sheki-search-card .form-control:focus, .sheki-search-card .form-select:focus {
+    border-color: var(--sheki-gold);
+    box-shadow: 0 0 0 4px rgba(197, 168, 128, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION HEADINGS
+   -------------------------------------------------------------------------- */
+.sheki-section {
+    padding: 90px 0;
+}
+.sheki-section-tag {
+    color: var(--sheki-gold);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+}
+.sheki-section-title {
+    font-size: 2.5rem;
+    color: var(--sheki-dark);
+    margin-bottom: 16px;
+}
+.sheki-section-desc {
+    color: var(--sheki-gray);
+    font-size: 1.05rem;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   HOTEL & ROOM CARDS
+   -------------------------------------------------------------------------- */
+.sheki-card {
+    background: #ffffff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--sheki-card-shadow);
+    transition: all 0.35s ease;
+    border: 1px solid #f1f5f9;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.sheki-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--sheki-card-shadow-hover);
+    border-color: rgba(197, 168, 128, 0.3);
+}
+.sheki-card-img-wrap {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+.sheki-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+.sheki-card:hover .sheki-card-img {
+    transform: scale(1.08);
+}
+.sheki-badge-rating {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    color: #facc15;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.sheki-badge-location {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    color: var(--sheki-dark);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.sheki-card-body {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.sheki-card-title {
+    font-size: 1.35rem;
+    margin-bottom: 10px;
+    font-family: var(--sheki-font-heading);
+}
+.sheki-card-title a {
+    color: var(--sheki-dark);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.sheki-card-title a:hover {
+    color: var(--sheki-gold);
+}
+.sheki-card-text {
+    color: var(--sheki-gray);
+    font-size: 0.92rem;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.sheki-amenities-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #f1f5f9;
+}
+.sheki-amenity-pill {
+    background: #f8fafc;
+    color: #475569;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.sheki-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+}
+.sheki-price-tag {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--sheki-dark);
+    font-family: var(--sheki-font-body);
+}
+.sheki-price-tag small {
+    font-size: 0.82rem;
+    color: var(--sheki-gray);
+    font-weight: 400;
+}
+
+/* --------------------------------------------------------------------------
+   FEATURE & EXPERIENCE CARDS
+   -------------------------------------------------------------------------- */
+.sheki-feature-box {
+    background: #ffffff;
+    padding: 35px 25px;
+    border-radius: 16px;
+    border: 1px solid #f1f5f9;
+    box-shadow: var(--sheki-card-shadow);
+    text-align: center;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+.sheki-feature-box:hover {
+    transform: translateY(-6px);
+    border-color: var(--sheki-gold);
+    box-shadow: var(--sheki-card-shadow-hover);
+}
+.sheki-feature-icon {
+    width: 68px;
+    height: 68px;
+    background: var(--sheki-gold-light);
+    color: var(--sheki-gold-hover);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    margin: 0 auto 20px;
+    transition: all 0.3s;
+}
+.sheki-feature-box:hover .sheki-feature-icon {
+    background: var(--sheki-gold);
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+/* --------------------------------------------------------------------------
+   MODERN AUTH PAGES
+   -------------------------------------------------------------------------- */
+.sheki-auth-wrapper {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #0b1120 0%, #1e293b 100%);
+    position: relative;
+}
+.sheki-auth-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(197, 168, 128, 0.15), transparent 40%);
+    pointer-events: none;
+}
+.sheki-auth-card {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 45px 40px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   CHECKOUT & BOOKINGS DASHBOARD
+   -------------------------------------------------------------------------- */
+.sheki-summary-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid #e2e8f0;
+    box-shadow: var(--sheki-card-shadow);
+}
+.sheki-summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px dashed #e2e8f0;
+    font-size: 0.95rem;
+}
+.sheki-summary-row.total {
+    border-bottom: none;
+    padding-top: 18px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--sheki-dark);
+}
+
+.sheki-badge-status {
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.sheki-badge-confirmed {
+    background: #dcfce7;
+    color: #15803d;
+}
+.sheki-badge-pending {
+    background: #fef9c3;
+    color: #854d0e;
+}
+.sheki-badge-cancelled {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* --------------------------------------------------------------------------
+   FOOTER
+   -------------------------------------------------------------------------- */
+.sheki-footer {
+    background: #0b1120;
+    color: #94a3b8;
+    padding: 80px 0 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.sheki-footer h4 {
+    color: #ffffff;
+    font-family: var(--sheki-font-heading);
+    font-size: 1.2rem;
+    margin-bottom: 24px;
+}
+.sheki-footer a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.sheki-footer a:hover {
+    color: var(--sheki-gold);
+    padding-left: 4px;
+}
+.sheki-footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 50px;
+    padding-top: 25px;
+    font-size: 0.85rem;
+}
+
+/* Media queries */
+@media (max-width: 991px) {
+    .sheki-hero-title { font-size: 2.5rem; }
+    .sheki-search-card { margin-top: 30px; }
+}
