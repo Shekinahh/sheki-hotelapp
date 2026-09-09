@@ -41,7 +41,7 @@
   "env": {
     "APP_NAME": "Shekinah Luxury Hotel",
     "APP_ENV": "production",
-    "APP_DEBUG": "true",
+    "APP_DEBUG": "false",
     "APP_KEY": "base64:ytJAFxvgPz4e3RdHiqHFx1MDFhiGrNeBq1ZiJN4O3kE=",
     "APP_URL": "https://shekinah-hotel-book-theta.vercel.app",
     "DB_CONNECTION": "pgsql",
