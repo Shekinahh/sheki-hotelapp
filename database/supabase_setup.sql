@@ -84,3 +84,10 @@ INSERT INTO apartments (id, hotel_id, name, image, max_persons, size, view, num_
 (5, 4, 'Signature Alpine Haven', 'room-5.jpg', 4, 110, 'Matterhorn Mountain View', 2, 420.00, 'Rustic elegance meets modern opulence with stone fireplace, heated cedar floors, private cedar sauna, and unobstructed alpine views.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 (6, 2, 'Ambassador Grand Suite', 'room-6.jpg', 4, 135, 'Central Park & Skyline View', 2, 540.00, 'A spacious haven boasting an executive study, formal dining lounge, walk-in dressing room, and state-of-the-art entertainment center.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
 ON CONFLICT (id) DO NOTHING;
+
+-- 8. Synchronize PostgreSQL Primary Key Sequences (prevents duplicate key 500 error on new registrations and bookings)
+SELECT setval(pg_get_serial_sequence('users', 'id'), COALESCE(MAX(id), 1)) FROM users;
+SELECT setval(pg_get_serial_sequence('hotels', 'id'), COALESCE(MAX(id), 1)) FROM hotels;
+SELECT setval(pg_get_serial_sequence('apartments', 'id'), COALESCE(MAX(id), 1)) FROM apartments;
+SELECT setval(pg_get_serial_sequence('bookings', 'id'), COALESCE(MAX(id), 1)) FROM bookings;
+

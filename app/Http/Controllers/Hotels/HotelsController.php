@@ -106,19 +106,44 @@ class HotelsController extends Controller
         $pricePerDay = (float) $room->price;
         $totalPrice  = $days * $pricePerDay;
 
-        $booking = Booking::create([
-            'name'         => $request->name,
-            'email'        => $request->email,
-            'phone_number' => $request->phone_number,
-            'check_in'     => $request->check_in,
-            'check_out'    => $request->check_out,
-            'duration'     => $days,
-            'price'        => $totalPrice,
-            'user_id'      => Auth::id(),
-            'room_name'    => $room->name,
-            'hotel_name'   => $hotelName,
-            'status'       => 'Confirmed',
-        ]);
+        try {
+            $booking = Booking::create([
+                'name'         => $request->name,
+                'email'        => $request->email,
+                'phone_number' => $request->phone_number,
+                'check_in'     => $request->check_in,
+                'check_out'    => $request->check_out,
+                'duration'     => $days,
+                'price'        => $totalPrice,
+                'user_id'      => Auth::id(),
+                'room_name'    => $room->name,
+                'hotel_name'   => $hotelName,
+                'status'       => 'Confirmed',
+            ]);
+        } catch (\Illuminate\Database\QueryException $e) {
+            if (str_contains($e->getMessage(), 'bookings_pkey') || str_contains($e->getMessage(), 'duplicate key')) {
+                try {
+                    \Illuminate\Support\Facades\DB::statement("SELECT setval(pg_get_serial_sequence('bookings', 'id'), COALESCE(MAX(id), 0) + 1, false) FROM bookings");
+                    $booking = Booking::create([
+                        'name'         => $request->name,
+                        'email'        => $request->email,
+                        'phone_number' => $request->phone_number,
+                        'check_in'     => $request->check_in,
+                        'check_out'    => $request->check_out,
+                        'duration'     => $days,
+                        'price'        => $totalPrice,
+                        'user_id'      => Auth::id(),
+                        'room_name'    => $room->name,
+                        'hotel_name'   => $hotelName,
+                        'status'       => 'Confirmed',
+                    ]);
+                } catch (\Throwable $ex) {
+                    throw $e;
+                }
+            } else {
+                throw $e;
+            }
+        }
 
         session()->put('current_booking_id', $booking->id);
         session()->put('total_price', $totalPrice);

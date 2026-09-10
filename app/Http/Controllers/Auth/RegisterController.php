@@ -63,10 +63,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        try {
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Auto-heal PostgreSQL sequence if manual seeding desynchronized users_id_seq
+            if (str_contains($e->getMessage(), 'users_pkey') || str_contains($e->getMessage(), 'duplicate key')) {
+                try {
+                    \Illuminate\Support\Facades\DB::statement("SELECT setval(pg_get_serial_sequence('users', 'id'), COALESCE(MAX(id), 0) + 1, false) FROM users");
+                    return User::create([
+                        'name' => $data['name'],
+                        'email' => $data['email'],
+                        'password' => Hash::make($data['password']),
+                    ]);
+                } catch (\Throwable $ex) {
+                    // Rethrow original if retry fails
+                }
+            }
+            throw $e;
+        }
     }
 }
